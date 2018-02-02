@@ -21,6 +21,7 @@ That now, Our dreams,
 They've finally come true.
 
 
+
 City of stars,
 
 Just one thing everybody wants.
@@ -28,6 +29,7 @@ Just one thing everybody wants.
 There in the bars
 
 and through the smokescreen of the crowded restaurants.
+
 
 
 It's love
@@ -43,6 +45,7 @@ A glance
 A touch
 
 A dance
+
 
 
 To look in somebody's eyes,
@@ -62,6 +65,7 @@ Cause all that I need is this crazy feeling
 And rat-a-tat of my heart
 
 I think I want it to stay
+
 
 
 
