@@ -1,5 +1,6 @@
--- 1) 연봉이 12000 이상 되는 직원들의 last_name 및 연봉을 조회
+-- SQL example
 
+-- 1) 연봉이 12000 이상 되는 직원들의 last_name 및 연봉을 조회
 SELECT last_name, salary
 FROM employees
 WHERE salary >= 12000;
@@ -124,8 +125,36 @@ SELECT job_id, MAX(salary), MAX(salary), SUM(salary), ROUND(AVG(salary))
 FROM employees
 GROUP BY job_id;
 
--- 21) 동일한 직업을 가진 사원들의 총 수를 조회한다.
+-- 21) 동일한 직업을 가진 사원들의 총 수를 조회
 SELECT job_id, count(job_id)
 FROM employees
 GROUP BY job_id;
 
+-- 22) 매니저로 근무하는 사원들의 총 수를 조회
+SELECT COUNT(DISTINCT(manager_id))
+FROM employees;
+
+-- 23) 사내 최대 연봉 및 최소 연봉의 차이를 조회
+SELECT MAX(salary)-MIN(salary)
+FROM employees;
+
+-- 24) 매니저의 사번 및 그 매니저 밑 사원들 중 최소 연봉을 받는 사원의 연봉을 조회한다.
+--     매니저가 없는 사람들은 제외한다.
+--     최소 연봉이 6000 미만인 경우는 제외한다.
+--     연봉 기준 역순으로 조회한다.
+SELECT manager_id, MIN(salary)
+FROM employees
+WHERE manager_id IS NOT NULL
+GROUP BY manager_id
+HAVING MIN(salary) >= 6000
+ORDER BY MIN(salary) desc;
+
+
+
+-- 25) 부서 명, 위치 ID, 각 부서 별 사원 총 수, 각 부서 별 평균 연봉을 조회
+--     평균 연봉은 소수점 2 자리까지만 표현
+SELECT department_name, location_id, COUNT(emp.department_id), ROUND(AVG(salary), 2)
+FROM employees emp 
+JOIN departments dep
+  ON emp.department_id = dep.department_id
+GROUP BY department_name, location_id;
