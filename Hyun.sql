@@ -106,6 +106,26 @@ WHERE total.commission_pct IS NOT NULL;
 SELECT last_name, hire_date
 FROM employees
 WHERE hire_date >= ( SELECT hire_date 
-                      FROM employees
+                     FROM employees
                      WHERE last_name = 'Davies' );
                      
+-- 18) 자신의 매니저보다 먼저 고용된 사원들의 LAST_NAME 및 고용일을 조회
+SELECT last_name, hire_date
+FROM employees emp
+WHERE hire_date < ( SELECT hire_Date
+                    FROM employees
+                    WHERE employee_id = emp.manager_id ) ;
+-- 19) 회사 전체의 최대 연봉, 최소 연봉, 연봉 총 합 및 평균 연봉을 자연수로 포맷하여 조회
+SELECT MAX(salary), MIN(salary), SUM(salary), ROUND(AVG(salary))
+FROM employees;
+
+-- 20) 각 JOB_ID 별, 최대 연봉, 최소 연봉, 연봉 총 합 및 평균 연봉을 자연수로 포맷하여 조회
+SELECT job_id, MAX(salary), MAX(salary), SUM(salary), ROUND(AVG(salary))
+FROM employees
+GROUP BY job_id;
+
+-- 21) 동일한 직업을 가진 사원들의 총 수를 조회한다.
+SELECT job_id, count(job_id)
+FROM employees
+GROUP BY job_id;
+
