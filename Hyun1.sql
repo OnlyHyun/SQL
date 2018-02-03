@@ -150,3 +150,13 @@ WHERE NOT EXISTS ( SELECT ''
                    -- 메인 쿼리의 부서 번호랑 일치하는 놈인지(이걸 확인하지 않으면 ST_CLERK가 있는 걸 무조건 조회할 수 밖에 없음)                   
 AND department_id IS NOT NULL; -- NULL 값이 아닌 걸로다가 조회
 
+-- 36) 위치한 부서가 없는 국가 ID 및 국가 이름을 조회(NOT EXISTS 사용) 
+SELECT country_id, country_name
+FROM countries con
+WHERE NOT EXISTS  ( SELECT  '1'
+                    FROM    locations loc, departments dep
+                    WHERE   con.country_id = loc.country_id
+                    AND     loc.location_id in (dep.location_id))
+ORDER   BY country_id;
+
+-- 슬 난이도가 어려워진다...../
