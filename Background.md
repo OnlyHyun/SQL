@@ -14,8 +14,7 @@ SQL is used to access and control data, and to use and communicate with the serv
 > This function is only executed for a single row and returns one result per row. 
 
 - ### 1. Character functions
-
-     
+   
       - LOWER(column|expression) 
       > Converts alphabetic values to lowercase
       
@@ -52,7 +51,6 @@ SQL is used to access and control data, and to use and communicate with the serv
       > Searches a string in a text expression and finds the string, replacing it with the specified replacement string
 
 - ### 2. Number functions
-
 
       - ROUND(column|expression, n) 
       > Rounds a column, expression, or value to n decimal places. If n is omitted, there are no decimal places. 
