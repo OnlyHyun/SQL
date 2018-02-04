@@ -51,7 +51,20 @@ SQL is used to access and control data, and to use and communicate with the serv
 
 - 2. Number functions
 
+
+      - ROUND(column|expression, n) 
+      > Rounds a column, expression, or value to n decimal places. If n is omitted, there are no decimal places. (If n is negative, the number to the left of the decimal point is rounded.)
+      
+      - TRUNC(column|expression, n)
+      > Truncates a column, expression, or value to n decimal places. If n is omitted, the default is 0
+      
+      - MOD(m,n) 
+      > Returns the remainder of dividing m by n.
+
 - 3. Date functions
+     
+     
+      - 
 
 - 4. Conversion functions
 
