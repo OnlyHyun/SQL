@@ -29,13 +29,16 @@ SQL is used to access and control data, and to use and communicate with the serv
       
       - SUBSTR(column|expression, m[,n])
       > Returns the characters specified by the length of n characters from the character value starting at position m 
-        (if m is      negative, it starts counting from the end of the character value, if n is omitted, all characters are returned to         the end of the string)
+        (if m is negative, it starts counting from the end of the character value, if n is omitted, all characters are 
+         returned to the end of the string)
       
       - LENGTH(column|expression) 
       > Returns the number of characters in the expression
       
       - INSTR(column|expression, ’string’, [,m], [n] ) 
-      > Returns the numeric position of the specified string. Optionally, you can provide a search start location, m, and the number of         occurrences of the string, n. The default value for m and n is 1, which starts the search from the beginning of the string and           reports the results found first
+      > Returns the numeric position of the specified string. Optionally, you can provide a search start location, m, 
+        and the number of occurrences of the string, n. The default value for m and n is 1, which starts the search 
+        from the beginning of the string and reports the results found first
       
       - LPAD(column|expression, n,  'string') 
       > Returns an expression filled with a character expression from the left to be n in length
