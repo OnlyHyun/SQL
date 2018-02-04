@@ -15,10 +15,11 @@ SQL is used to access and control data, and to use and communicate with the serv
 
 - 1. Character functions
 
+     
       LOWER(column|expression) 
       > Converts alphabetic values to lowercase
       
-      UPPER(column|expression)
+      UPPER(column|expression)
       > Converts alphabetic values to uppercase
       
       INITCAP(column|expression)
