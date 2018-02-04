@@ -1,6 +1,6 @@
 # SQL Background
 
-
+---
 # 1. Definition of SQL
 
 > SQL is Structured Query Language.
@@ -82,3 +82,24 @@ SQL is used to access and control data, and to use and communicate with the serv
 >
 
 
+---
+
+# 3. JOIN
+
+## 3.1 Join Type
+
+### - 1. Natural Join
+    - > Select the rows in both tables that have the same values in all the corresponding columns
+
+### - 2. Self Join
+    - > 
+
+### - 3. Cross Join
+
+### - 4. Outer Join
+
+#### - Lefter Outer Join
+     
+#### - Right Outer Join 
+
+#### - Full Outer Join
