@@ -22,7 +22,8 @@ SQL is used to access and control data, and to use and communicate with the serv
       > Converts alphabetic values to uppercase
       
       - INITCAP(column|expression)
-      > Converts the first character of an alphabetic value to uppercase, and places the remaining characters in lowercase
+      > Converts the first character of an alphabetic value to uppercase, and places the remaining 
+        characters in lowercase
     
       - CONCAT(column1|expression1, column2|expression2)
       > Associates the first character value with the second character value. It is the same function 
@@ -52,7 +53,8 @@ SQL is used to access and control data, and to use and communicate with the serv
         a character literal, you must enclose it in single quotation marks
 
       - REPLACE(text, search_string, replacement_string) 
-      > Searches a string in a text expression and finds the string, replacing it with the specified replacement string
+      > Searches a string in a text expression and finds the string, replacing it with the specified 
+        replacement string
 
 - ### 2. Number functions
 
