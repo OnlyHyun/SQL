@@ -1,19 +1,19 @@
 # SQL Background
 
 
-## 1. Definition of SQL
+# 1. Definition of SQL
 
 > SQL is Structured Query Language.
  
 SQL is used to access and control data, and to use and communicate with the server.
  
-## 2. SQL function 
+# 2. SQL function 
 
-### 2.1 Single Row Function
+## 2.1 Single Row Function
 
 > This function is only executed for a single row and returns one result per row. 
 
-- 1. Character functions
+- ### 1. Character functions
 
      
       - LOWER(column|expression) 
@@ -49,7 +49,7 @@ SQL is used to access and control data, and to use and communicate with the serv
       - REPLACE(text, search_string, replacement_string) 
       > Searches a string in a text expression and finds the string, replacing it with the specified replacement string
 
-- 2. Number functions
+- ## 2. Number functions
 
 
       - ROUND(column|expression, n) 
@@ -61,17 +61,17 @@ SQL is used to access and control data, and to use and communicate with the serv
       - MOD(m,n) 
       > Returns the remainder of dividing m by n.
 
-- 3. Date functions
+- ## 3. Date functions
      
      
       - 
 
-- 4. Conversion functions
+- ## 4. Conversion functions
 
-- 5. General functions
+- ## 5. General functions
 
 
-### 2.2 Multiple Row Functions
+## 2.2 Multiple Row Functions
 
 >
 
