@@ -160,3 +160,26 @@ WHERE NOT EXISTS  ( SELECT  '1'
 ORDER   BY country_id;
 
 -- 슬 난이도가 어려워진다.....
+-- 37) 기존의 직업을 여전히 가지고 있는 사원들의 사번 및 JOB_ID 를 조회
+SELECT emp.employee_id, emp.job_id
+FROM employees emp, job_history job
+WHERE emp.employee_id = job.employee_id
+AND   emp.job_id = job.job_id;
+
+-- 38) 커미션을 버는 사원들과 부서, 연봉이 동일한 사원들의 LAST_NAME, 부서 번호 및 연봉 조회
+SELECT last_name, department_id, salary
+FROM employees
+WHERE (department_id, salary) IN ( SELECT department_id, salary
+                                   FROM employees
+                                   WHERE commission_pct IS NOT NULL );
+
+-- 39) 위치 ID 가 1700 인 사원들의 연봉과 커미션이 동일한 사원들의 LAST_NAME, 부서 번호 및 연봉을 조회
+SELECT  last_name, E.department_id, salary
+FROM    employees E, departments D
+WHERE   E.department_id = D.department_id
+AND     (salary, NVL(commission_pct, 0)) IN ( SELECT  salary, NVL(commission_pct, 0)
+                                              FROM    employees E1, departments D1
+                                              WHERE   E1.department_id = D1.department_id
+                                              AND     D1.location_id = 1700
+                                              AND     E1.employee_id != E.employee_id);
+                                              
