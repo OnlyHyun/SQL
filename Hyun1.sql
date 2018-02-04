@@ -159,4 +159,4 @@ WHERE NOT EXISTS  ( SELECT  '1'
                     AND     loc.location_id in (dep.location_id))
 ORDER   BY country_id;
 
--- 슬 난이도가 어려워진다...../
+-- 슬 난이도가 어려워진다.....
