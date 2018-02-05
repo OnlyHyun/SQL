@@ -183,3 +183,61 @@ AND     (salary, NVL(commission_pct, 0)) IN ( SELECT  salary, NVL(commission_pct
                                               AND     D1.location_id = 1700
                                               AND     E1.employee_id != E.employee_id);
                                               
+-- 40) last_name 이 'Kochhar' 인 사원과 동일한 연봉 및 커미션을 버는 사원들의 last_name, 부서 번호 및 연봉을 조회
+SELECT  last_name, department_id, salary
+FROM    employees
+WHERE   (salary, NVL(commission_pct, 0)) IN (  SELECT salary, NVL(commission_pct, 0)
+                                               FROM   employees
+                                               WHERE  last_name = 'Kochhar')
+AND     last_name != 'Kochhar';                                             
+
+-- 41) 직업 ID 가 SA_MAN 인 사원들의 최대 연봉 보다 높게 받는 사원들의 last_name, job_id 및 연봉을 조회
+SELECT last_name, job_id, salary
+FROM employees
+WHERE salary > ( SELECT MAX(salary)
+                 FROM   employees
+                 WHERE  job_id = 'SA_MAN' );
+
+-- 42) 도시 이름이 T 로 시작하는 지역에 사는 사원들의 사번, last_name 및 부서 번호를 조회 
+SELECT  employee_id, last_name, dep.department_id
+FROM    employees emp, departments dep, locations loc
+WHERE   emp.department_id = dep.department_id
+AND     dep.location_id = loc.location_id
+AND     loc.city LIKE 'T%';
+
+-- 43) 각 부서별 평균 연봉보다 더 받는 동일부서 근무사원들의 last_name, 연봉, 부서번호 및 해당 부서의 
+--     평균 연봉을 조회, 결과는 부서별 연봉을 기준으로 정렬한다.
+SELECT  last_name, salary, department_id, ( SELECT   ROUND(AVG(salary))
+                                            FROM     employees E2
+                                            GROUP BY department_id
+                                            HAVING   E1.department_id = E2.department_id ) "AVG(salary)"
+FROM    employees E1
+WHERE   salary > ( SELECT   AVG(salary)
+                   FROM     employees E2
+                   GROUP BY department_id
+                   HAVING   E1.department_id = E2.department_id )
+ORDER BY 4;
+
+-- 44) NOT EXISTS 연산자를 사용하여 매니저가 아닌 사원 이름을 조회
+SELECT  last_name
+FROM employees EMP
+WHERE NOT EXISTS ( SELECT ' ' 
+                   FROM   employees MAN
+                   WHERE  EMP.employee_id = MAN.manager_id )
+ORDER BY  employee_id;
+
+-- 45) 소속부서의 평균 연봉보다 적게 버는 사원들의 last_name, department_id, salary, 부서평균 salary 을 조회
+SELECT  last_name, department_id, salary, (  SELECT    ROUND(AVG(salary))
+                                             FROM      employees E2
+                                             GROUP BY  department_id
+                                             HAVING    E1.department_id = E2.department_id ) "AVG(salary)"
+FROM    employees E1
+WHERE   salary < (  SELECT    AVG(salary)
+                    FROM      employees E2
+                    GROUP BY  department_id
+                    HAVING    E1.department_id = E2.department_id )
+ORDER BY  4;
+
+-- 46) 각 사원 별 소속부서에서 자신보다 늦게 고용되었으나 보다 많은 연봉을 받는
+--     사원이 존재하는 모든 사원들의 last_name 을 조회
+
