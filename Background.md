@@ -94,8 +94,9 @@ SQL is used to access and control data, and to use and communicate with the serv
 ### - 2. Self Join
     - > 
 
-### - 3. Cross Join
-
+### - 3. Nonequi Join
+    - > Nonequijoin is a join condition that contains other operators than the equals operator
+    
 ### - 4. Outer Join
 
 #### - Lefter Outer Join
