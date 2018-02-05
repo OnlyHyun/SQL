@@ -240,4 +240,14 @@ ORDER BY  4;
 
 -- 46) 각 사원 별 소속부서에서 자신보다 늦게 고용되었으나 보다 많은 연봉을 받는
 --     사원이 존재하는 모든 사원들의 last_name 을 조회
+SELECT  last_name
+FROM    employees E1
+WHERE   EXISTS  ( SELECT ' ' 
+                  FROM   employees E2
+                  WHERE  E1.department_id = E2.department_id
+                  AND    E1.salary < E2.salary
+                  AND    E1.hire_date < E2.hire_date );
+-- 저 조건에서 한 명이라도 그런 후배가 있다면 빠져나와서 출력하는 EXISTS문
+             
 
+                      
