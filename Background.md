@@ -268,13 +268,20 @@ SQL is used to access and control data, and to use and communicate with the serv
 
 		column [CONSTRAINT constraint_name] constraint_type,
 
+		EX. 열 레벨 제약 조건 예제
+
+		CREATE TABLE employees(
+		  employee_id NUMBER(6)
+		    CONSTRAINT emp_emp_id_pk PRIMARY KEY,
+		  first_name  VARCHAR2(20).
+		...);
+
 	- 테이블 레벨 제약 조건 구문 :
 
 		column,...
 		  [CONSTRAINT constraint_name] constraint_type
 		  (column, ...),
 
-	> 정의 시 열 바로 다음에 제약 조건을 설정해 주면 열 레벨 제약 조건이 되고
-	> 열을 다 정의한 후에 제약 조건을 설정해 주게 되면 테이블 레벨 제약 조건이 된다
 
-	
+		EX. 테이블 레벨 제약 조건 예제
+
