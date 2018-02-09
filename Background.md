@@ -153,7 +153,51 @@ SQL is used to access and control data, and to use and communicate with the serv
 			   dname	VARCHAR2(14),
 			   loc		VARCHAR2(13),
 			   create_date DATE DEFAULT SYSDATE);
-    
+
+
+### 데이터 유형
+
+- VARCHAR2(size)
+  
+  > 가변 길이 문자 데이터
+
+- CHAR(size)
+
+  > 고정 길이 문자 데이터
+
+- NUMBER(p, s)
+
+  > 가변 길이 숫자 데이터
+
+- DATE 
+
+  > 날짜 및 시간 값
+
+- LONG
+
+  > 가변 길이 문자 데이터(최대 2GB)
+
+- CLOB
+
+  > 문자 데이터(최대 4GB)
+
+- RAW and LONG RAW
+
+  > 원시 이진 데이터
+
+- BLOB
+
+  > 바이너리 데이터(최대 4GB)
+
+- BFILE
+
+  > 외부 파일에 저장된 바이너리 데이터(최대 4GB)
+
+- ROWID
+
+  > 테이블에 있는 행의 고유한 주소를 나타내는 base-64 숫자 체계
+
+
 
 
 
