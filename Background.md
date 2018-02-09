@@ -291,3 +291,98 @@ SQL is used to access and control data, and to use and communicate with the serv
 		    PRIMARY KEY (EMPLOYEE_ID));
 
 
+---
+
+# 5. DML 문을 이용하여 테이블 조작하기
+
+> DML 문은 다음과 같은 경우에 쓰인다
+- 테이블에 새 행 추가
+- 테이블의 기존 행 수정
+- 테이블에서 기존 행 제거
+
+> 트랜잭션은 논리적 작업 단위를 형성하는 DML 문의 모음으로 구성된다
+
+## 5.1 INSERT문
+
+### - INSERT 문을 사용하여 테이블에 새 행을 추가할 수 있다
+
+	EX. 
+	
+	INSERT INTO table [(column [, colimn...])]
+	VALUES	    (value [, value...]);
+
+### - null 값을 가진 행 삽입
+
+	- 암시적 방법 : 열 리스트에서 열을 생략한다
+
+	- 명시적 방법 : VALUES 절에서 NULL 키워드를 지정한다
+
+### - 다른 테이블에서 행 복사
+
+	- INSERT 문을 subquery로 작성한다
+
+	- VALUES 절을 사용하면 안 된다
+
+	- INSERT 절의 열 개수를 subquery의 열 개수와 일치시킨다
+
+	EX.
+
+	INSERT INTO sales_reps(id, name, salary, commission_pct) 
+	  SELECT employee_id, last_name, salary, commission_pct 
+	  FROM   employees 
+	  WHERE  job_id LIKE '%REP%';
+
+## 5.2 UPDATE문
+
+### - UPDATE 문을 사용하여 테이블의 기존 값을 수정할 수 있다
+> 필요한 경우 한 번에 두 개 이상의 행을 갱신할 수 있다
+
+
+### - 테이블의 행 갱신
+
+	- WHERE 절을 지정하면 특정 행에서 값이 수정된다
+	
+	- WHERE 절을 생략하면 테이블의 모든 행에서 값이 수정된다
+
+	- 열 값을 NULL로 갱신하려면 SET column_name = NULL 을 지정한다
+
+### - Subquery를 사용하여 두 개의 열 갱신
+
+	EX.
+
+	UPDATE table 
+	SET     column =
+				(SELECT column 
+				 FROM table 
+				 WHERE condition)
+		[ , 
+		 column = 
+				(SELECT column 
+				 FROM table 
+				 WHERE condition)]
+	[WHERE  condition ];
+ 
+
+## 5.3 DELETE문
+
+### - DELETE 문을 사용하여 테이블에서 기존 행을 제거할 수 있다
+
+### - WHERE절을 지정하면 특정 행이 삭제된다
+
+### - WHERE절을 생략하면 테이블의 모든 행이 삭제된다
+
+### - 다른 테이블을 기반으로 행 삭제
+
+	EX.
+
+	DELETE FROM employees 
+	WHERE  department_id = (SELECT department_id 
+				FROM   departments 
+				WHERE  department_name LIKE '%Public%');
+	
+## 번외) TRUNCATE 문
+
+### - DML문이 아니라 DDL문이므로 쉽게 언두할 수 없다
+
+### - 테이블은 빈 상태로, 테이블 구조는 그대로 남겨둔 채 테이블에서 모든 행을 제거한다
+
