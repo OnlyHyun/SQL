@@ -197,13 +197,84 @@ SQL is used to access and control data, and to use and communicate with the serv
 
   > 테이블에 있는 행의 고유한 주소를 나타내는 base-64 숫자 체계
 
+### Datetime 데이터 유형
 
+- TIMESTAMP
 
+  > 소수 표시 초 단위의 날짜
 
+- INTERVAL YEAR TO MONTH
 
+  > 년, 월 간격으로 저장된다
 
+- INTERVAL DAY TO SECOND
 
+  > 일, 시, 분, 초 간격으로 저장된다
 
+### 제약 조건
 
+> 제약 조건은 테이블 레벨에서 규칙을 강제 적용한다
+> 제약 조건은 테이블에 종속 관계가 있는 경우 삭제를 방지한다
 
+#### 1. 제약 조건 유형
 
+- NOT NULL
+
+  > 열에 null값을 포함할 수 없음을 지정
+
+- UNIQUE
+
+  > 테이블의 모든 행에 대해 값이 고유해야 하는 열 또는 열 조합을 지정
+
+- PRIMARY KEY
+
+  > 테이블의 각 행을 고유하게 식별
+
+- FOREIGN KEY
+
+  > 특정 테이블의 열과 참조 테이블의 열 간에 참조 무결성을 설정하고 적용하여
+  > 한 테이블의 값이 다른 테이블의 값과 일치하도록 한다
+
+- CHECK
+
+  > 참이어야 하는 조건을 지정
+
+#### 2. 제약 조건 지침
+
+- 유저가 제약 조건 이름을 지정하거나 유저가 지정하지 않을 시 
+  Oracle 서버가 SYS_Cn 형식을 사용하여 이름을 생성할 수 있다
+	
+- 다음 시점 중 하나에서 제약 조건을 생성한다
+
+-- 1. 테이블이 생성되는 시점
+
+-- 2. 테이블 생성 후
+
+	- 열 또는 테이블 레벨에서 제약 조건을 정의한다
+
+	- 데이너 딕셔너리에서 제약 조건을 확인한다
+
+#### 3. 제약 조건 정의
+
+	- 구문 :
+
+		CREATE TABLE [schema.] table
+		       (column datatype [DEFAULT expr]
+		       [column_constraint],
+		       ...
+		       [table_constraint][,...]);
+
+	- 열 레벨 제약 조건 구문 :
+
+		column [CONSTRAINT constraint_name] constraint_type,
+
+	- 테이블 레벨 제약 조건 구문 :
+
+		column,...
+		  [CONSTRAINT constraint_name] constraint_type
+		  (column, ...),
+
+	> 정의 시 열 바로 다음에 제약 조건을 설정해 주면 열 레벨 제약 조건이 되고
+	> 열을 다 정의한 후에 제약 조건을 설정해 주게 되면 테이블 레벨 제약 조건이 된다
+
+	
