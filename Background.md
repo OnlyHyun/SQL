@@ -2,7 +2,6 @@
 
 ---
 # 1. Definition of SQL
-
 > SQL is Structured Query Language.
  
 SQL is used to access and control data, and to use and communicate with the server.
@@ -10,7 +9,6 @@ SQL is used to access and control data, and to use and communicate with the serv
 # 2. SQL function 
 
 ## 2.1 Single Row Function
-
 > This function is only executed for a single row and returns one result per row. 
 
 - ### 1. Character functions
@@ -79,7 +77,6 @@ SQL is used to access and control data, and to use and communicate with the serv
 
 ## 2.2 Multiple Row Functions
 
->
 
 
 ---
@@ -284,4 +281,13 @@ SQL is used to access and control data, and to use and communicate with the serv
 
 
 		EX. 테이블 레벨 제약 조건 예제
+
+		CREATE TABLE employees(
+		  employee_id NUMBER(6),
+		  first_name  VARCHAR2(20),
+		  ...
+		  job_id      VARCHAR2(10) NOT NULL,
+		  CONSTRAINT emp_emp_id_pk
+		    PRIMARY KEY (EMPLOYEE_ID));
+
 
