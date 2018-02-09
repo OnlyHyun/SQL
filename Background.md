@@ -1,4 +1,4 @@
-# SQL Background
+﻿# SQL Background
 
 ---
 # 1. Definition of SQL
@@ -104,3 +104,62 @@ SQL is used to access and control data, and to use and communicate with the serv
 #### - Right Outer Join 
 
 #### - Full Outer Join
+
+---
+
+# 4. DDL 문 사용하여 테이블 생성 및 관리
+
+## 4.1 데이터베이스 객체
+
+- 테이블
+
+  > 기본 저장 단위이며 행으로 구성되어 있다.
+
+- 뷰
+
+  > 하나 이상의 테이블에 있는 데이터 부분 집합을 논리적으로 나타낸다.
+
+- 시퀀스
+	
+  > 숫자 값을 생성한다.
+
+- 인덱스
+  
+  > 일부 query 성능을 향샹시킨다.
+
+- 동의어
+  
+  > 객체에 다른 이름을 부여한다.
+
+## 4.2 CREATE TABLE 문
+
+### 다른 유저의 테이블에 액세스
+    
+    > 테이블을 생성하려면 유저는 CREATE TABLE 권한이 있어야 하며 객체를 생성할 저장 영역이 있어야 한다. DBA는 DCL문을 사용하여 유저에게 권한을 부여할 수 있다.
+    > 다른 유저가 소유한 테이블은 유저의 스키마에 없기 때문에 이러한 테이블에는 소유자의 이름을 접두어로 사용해야 한다.
+
+	EX. user a의 입장
+    
+	SELECT *
+	FROM userb.employees;
+
+### DEFAULT 옵션
+
+    > 열에 대한 값이 없는 행이 삽입되는 경우 NULL 값이 입력되는 것을 방지해주는 기능을 한다. 
+    
+	EX. DEFAULT 옵션 사용법
+
+	CREATE TABLE dept( deptno	NUMBER(2),
+			   dname	VARCHAR2(14),
+			   loc		VARCHAR2(13),
+			   create_date DATE DEFAULT SYSDATE);
+    
+
+
+
+
+
+
+
+
+
