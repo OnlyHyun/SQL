@@ -396,16 +396,19 @@ SQL is used to access and control data, and to use and communicate with the serv
 
 	- 하나의 DCL문
 
-## 첫번째 DML SQL 문이 실행될 때 시작된다
-## 다음 상황 중 하나가 발생하면 종료된다
+## 데이터 베이스 트랜잭션 시작과 종료
 
-	- COMMIT 또는 ROLLBACK 문 실행
+	### 첫번째 DML SQL 문이 실행될 때 시작된다
 
-	- DDL 또는 DCL문 실행(자동 커밋)
+	### 다음 상황 중 하나가 발생하면 종료된다
 
-	- 유저가 SQL Developer 또는 SQL*Plus를 종료
-
-	- 시스템 중단
+		- COMMIT 또는 ROLLBACK 문 실행
+	
+		- DDL 또는 DCL문 실행(자동 커밋)
+	
+		- 유저가 SQL Developer 또는 SQL*Plus를 종료
+	
+		- 시스템 중단
 
 ## COMMIT 및 ROLLBACK 문의 이점
 
